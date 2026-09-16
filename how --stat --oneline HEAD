@@ -1,0 +1,26 @@
+[33mba7d0c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m data ingetion completed
+ .gitignore                       |  10 [32m++[m
+ .python-version                  |   1 [32m+[m
+ README.md                        |   0
+ artifacts/raw.csv                | 100 [32m++++++++++++++++[m
+ artifacts/test.csv               |  21 [32m++++[m
+ artifacts/train.csv              |  81 [32m+++++++++++++[m
+ logs/09_10_2026_20_24_58.log     |   1 [32m+[m
+ logs/09_10_2026_23_07_01.log     |   1 [32m+[m
+ logs/09_10_2026_23_09_03.log     |   0
+ logs/09_16_2026_13_47_38.log     |   2 [32m+[m
+ logs/09_16_2026_13_50_50.log     |   4 [32m+[m
+ notebook/data/__init__.py        |   0
+ notebook/data/covid_toy.csv      | 101 [32m++++++++++++++++[m
+ pyproject.toml                   |  21 [32m++++[m
+ requirements.txt                 |   3 [32m+[m
+ src/__init__.py                  |   2 [32m+[m
+ src/components/__init__.py       |   0
+ src/components/data_ingestion.py |  46 [32m+++++++[m
+ src/exception.py                 |  23 [32m++++[m
+ src/logger.py                    |  35 [32m++++++[m
+ src/test.py                      |  15 [32m+++[m
+ src/utils.py                     |  38 [32m++++++[m
+ steps.txt                        |  10 [32m++[m
+ uv.lock                          | 252 [32m+++++++++++++++++++++++++++++++++++++++[m
+ 24 files changed, 767 insertions(+)
