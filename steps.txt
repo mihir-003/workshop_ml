@@ -8,3 +8,4 @@ src ---> utils.py ---> for model import, export and performance evaluation
 notebook folder --> data folder ---> covid_toy.csv
 src ---> components ---> __init__.py
 src ---> components ---> data_ingestion.py
+src ---> components ---> data_transformation.py

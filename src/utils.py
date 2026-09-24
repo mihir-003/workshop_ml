@@ -8,21 +8,21 @@ logger = get_logger(__name__)
 
 def save_object(file_path: str, obj):
     try:
-        dir_path = os.pathdir_name(file_path)
+        dir_path = os.path.dirname(file_path)
         os.makedirs(dir_path, exist_ok=True)
         with open(file_path, "wb") as file_obj:
             pickle.dump(obj, file_obj)
         logger.info(f"Object Saved Successfully at {file_path}")
 
     except Exception as e:
-        raise CustomException(sys,e)
+        raise CustomException(e, sys)
 
 def load_object(file_path: str):
     try:
         with open(file_path, "rb") as file_obj:
             return pickle.load(file_obj)
     except Exception as e:
-        raise CustomException(sys, e)
+        raise CustomException(e, sys)
 
 def evaluate_models(x_train, y_train, x_test, y_test, models:dict):
     try:
