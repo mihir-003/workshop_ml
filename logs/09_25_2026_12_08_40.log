@@ -1,0 +1,19 @@
+[2026-09-25 12:08:40,406] 11 __main__ -INFO -TRAINING PIPELINE STARTED....
+[2026-09-25 12:08:40,407] 22 src.components.data_ingestion -INFO -Data Ingestion started....
+[2026-09-25 12:08:40,411] 25 src.components.data_ingestion -INFO -Data read succefully with shape : (100, 6)
+[2026-09-25 12:08:40,415] 30 src.components.data_ingestion -INFO -Performing Train-Test-Split
+[2026-09-25 12:08:40,474] 36 src.components.data_ingestion -INFO -Data Ingestion Successfully....
+[2026-09-25 12:08:40,482] 63 src.components.data_transformation -INFO -Train test data loaded for tramsformation...
+[2026-09-25 12:08:40,487] 53 src.components.data_transformation -INFO -preprocessor object created successfully....
+[2026-09-25 12:08:40,487] 74 src.components.data_transformation -INFO -Applying preprocessing on train test data
+[2026-09-25 12:08:40,528] 15 src.utils -INFO -Object Saved Successfully at artifacts\preprocessor.pkl
+[2026-09-25 12:08:40,528] 86 src.components.data_transformation -INFO -Preprocessor object save as preprocessor.pkl
+[2026-09-25 12:08:40,529] 23 src.components.model_trainer -INFO -Spliting train and test input data
+[2026-09-25 12:08:40,603] 35 src.utils -INFO -LogisticRegression -> Test Accuracy : 0.45
+[2026-09-25 12:08:40,615] 35 src.utils -INFO -DecisionTree -> Test Accuracy : 0.47
+[2026-09-25 12:08:40,708] 35 src.utils -INFO -RandomForest -> Test Accuracy : 0.38
+[2026-09-25 12:08:40,721] 35 src.utils -INFO -KNeighboursClassifier -> Test Accuracy : 0.47
+[2026-09-25 12:08:40,722] 43 src.components.model_trainer -INFO -Best Model saved as model.pkl ::: DecisionTree
+[2026-09-25 12:08:40,725] 15 src.utils -INFO -Object Saved Successfully at artifacts\model.pkl
+[2026-09-25 12:08:40,725] 46 src.components.model_trainer -INFO -Best Model saved: DecisionTree
+[2026-09-25 12:08:40,726] 25 __main__ -INFO -TRAINING PIPELINE COMPLETED | BEST MODEL: DecisionTree, Accuracy: 0.47
