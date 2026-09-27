@@ -1,21 +1,29 @@
 [project]
 name = "workshop-ml"
 version = "0.1.0"
-description = "Add your description here"
+description = "Machine Learning Workshop Project"
 readme = "README.md"
 authors = [
     { name = "Mihir Singh", email = "singhmihir002@gmail.com" }
 ]
-requires-python = ">=3.14"
+
+requires-python = ">=3.13,<3.14"
+
 dependencies = [
+    "fastapi>=0.141.1",
+    "gensim==4.4.0",
+    "jinja2>=3.1.6",
+    "nltk>=3.10.3",
     "numpy>=2.5.3",
     "pandas>=3.0.5",
+    "python-multipart>=0.0.32",
     "scikit-learn>=1.9.0",
+    "uvicorn>=0.54.0",
 ]
-
-[project.scripts]
-workshop-ml = "workshop_ml:main"
 
 [build-system]
 requires = ["uv_build>=0.12.12,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv]
+package = false
