@@ -62,6 +62,7 @@ lifespan = with_slot_cleanup(lifespan)
 
 from care_assistant.router import router as assistant_router
 from clinic.admin_treatment_routes import router as admin_treatment_router
+from mcp_rbac.router import router as mcp_router
 app = FastAPI(
     title="Sanjeevani - Covid Prediction Clinic",
     description="AI powered healthcare and Covid prediction application",
@@ -111,6 +112,7 @@ app.include_router(smart_care_router)
 app.include_router(assistant_router)
 app.include_router(admin_router)
 app.include_router(admin_treatment_router)
+app.include_router(mcp_router)
 
 
 # ---------------------------------------------------------

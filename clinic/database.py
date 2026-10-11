@@ -7,7 +7,7 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
 
-load_dotenv(dotenv_path=ENV_PATH, override=True)
+load_dotenv(dotenv_path=ENV_PATH, override=False)
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
@@ -32,5 +32,7 @@ def get_db():
 
 def init_db():
     from clinic import models  # noqa: F401
+    from care_assistant import repository  # noqa: F401
+    from mcp_rbac import audit  # noqa: F401
 
     Base.metadata.create_all(bind=engine)

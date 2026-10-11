@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sanjeevani secure, verified, conversational MCP assistant">
+  <title>Sanjeevani | MCP Assistant</title>
+  <link rel="stylesheet" href="/static/mcp.css">
+  <script src="/static/mcp.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="Sanjeevani home">
+        <span class="brand-logo" aria-hidden="true">✚</span>
+        <span>Sanjeevani<small>Verified MCP Assistant</small></span>
+      </a>
+      <div class="role-card"><span class="online-dot"></span><span id="role-label">Checking access…</span></div>
+      <div class="sidebar-section">
+        <span class="overline">ONE CHAT · ALL AUTHORIZED ACTIONS</span>
+        <p>Ask in your own words. The assistant selects the appropriate secure MCP tool automatically.</p>
+      </div>
+      <div class="sidebar-section">
+        <span class="overline">YOUR CAPABILITIES</span>
+        <div id="capability-list" class="capabilities" aria-live="polite">Loading…</div>
+      </div>
+      <div class="sidebar-bottom">
+        <p>🔒 Database-verified answers, role-based access and explicit approval before changes.</p>
+        <a href="/">← Original homepage chatbot</a>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">SECURE CARE WORKSPACE</div><h1>How can I help?</h1><p>One conversation for your clinic tasks. No forms or tool switching.</p></div>
+        <a class="home-link" href="/">Go to homepage ↗</a>
+      </header>
+      <section class="chat-card" aria-label="MCP conversation">
+        <div class="chat-head"><div class="chat-icon">✚</div><div><strong>Sanjeevani Assistant</strong><small>Connected to verified clinic records via 10 private MCP servers</small></div><span class="verified">● Verified</span></div>
+        <div id="messages" class="messages" role="log" aria-live="polite" aria-relevant="additions">
+          <div class="bubble assistant">Hello! Tell me what you need in normal language. I can search real records and, with your confirmation, perform actions you're authorized to use.</div>
+        </div>
+        <div id="suggestions" class="suggestions" aria-label="Suggested questions"></div>
+        <form id="chat-form" class="composer">
+          <label class="sr-only" for="message">Type your message</label>
+          <input id="message" name="message" maxlength="1000" autocomplete="off" placeholder="Ask me anything about clinic appointments…" required>
+          <button id="send" type="submit">Send <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="notice">Medical emergencies require urgent in-person care. The assistant does not diagnose conditions. Times shown in India Standard Time (IST).</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+SANJEEVANI / workshop_ml - Secure MCP Upgrade
+===========================================
+
+This ZIP is the full project, NOT a patch. It has no .env or real passwords.
+The old homepage chatbot is preserved. A copy of its original sources is:
+  docs/original_chatbot_backup.zip
+
+WINDOWS / POWERSHELL
+--------------------
+1) Unzip beside the original project, for example:
+   Expand-Archive "D:\workshop_ml_mcp_completed.zip" -DestinationPath "D:\" -Force
+   cd D:\workshop_ml_mcp_completed
+
+2) Copy ONLY your own existing local .env from the ORIGINAL project:
+   Copy-Item "D:\workshop_ml\.env" "D:\workshop_ml_mcp_completed\.env"
+   Do not upload or commit .env.
+
+3) Ensure .env contains DATABASE_URL and a strong ADMIN_SESSION_SECRET.
+   To generate a new admin secret (copy into .env):
+   uv run python -c "import secrets; print(secrets.token_urlsafe(48))"
+   If you change ADMIN_SESSION_SECRET, existing admin sessions will be invalid.
+
+4) Install project dependencies:
+   uv sync
+
+5) Start (single process):
+   uv run uvicorn main:app --reload
+
+6) Browse:
+   http://127.0.0.1:8000/              old, unchanged chat
+   http://127.0.0.1:8000/newpage.html   new secure MCP chat
+   http://127.0.0.1:8000/login          patient login
+   http://127.0.0.1:8000/admin/login    admin login
+
+7) Create an admin (password entered privately, not on CLI argument):
+   uv run python -m mcp_rbac.manage create-admin clinicadmin
+   Optional: make it Super Admin using a trusted local shell:
+   uv run python -m mcp_rbac.manage promote-admin clinicadmin
+
+8) Run RBAC unit and integration tests (no actual MySQL credentials required):
+   uv run python -m unittest discover -s tests -p "test_mcp_policy.py" -v
+   uv run python -m unittest discover -s tests -p "test_mcp_integration.py" -v
+
+If either test fails, do NOT expose the new application publicly.
+Read docs/MCP_ARCHITECTURE.md for permissions, limitations and integration.
+No changes have been made to your original D:\workshop_ml folder by this ZIP.

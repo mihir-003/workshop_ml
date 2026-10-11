@@ -11,3 +11,5 @@ groq>=0.31,<1
 sqlalchemy>=2.0,<3
 pymysql>=1.1,<2
 pillow>=11,<13
+fastmcp>=4.0.10,<5
+python-dotenv>=1.2.3

@@ -33,7 +33,9 @@ def verify_password(password: str, stored: str) -> bool:
 
 
 def _secret() -> bytes:
-    value = os.getenv("ADMIN_SESSION_SECRET", "dev-only-change-this-secret")
+    value = os.getenv("ADMIN_SESSION_SECRET", "")
+    if len(value) < 32 or value == "dev-only-change-this-secret":
+        raise RuntimeError("Set ADMIN_SESSION_SECRET to a random secret of at least 32 characters in .env")
     return value.encode("utf-8")
 
 

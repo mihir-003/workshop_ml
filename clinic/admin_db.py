@@ -1,4 +1,4 @@
-from sqlalchemy import text
+from sqlalchemy import inspect, text
 from clinic.database import engine
 
 
@@ -11,6 +11,7 @@ def init_admin_tables() -> None:
             username VARCHAR(120) NOT NULL UNIQUE,
             password_hash VARCHAR(255) NOT NULL,
             is_active BOOLEAN NOT NULL DEFAULT TRUE,
+            role VARCHAR(20) NOT NULL DEFAULT 'admin',
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
         """,
@@ -43,3 +44,7 @@ def init_admin_tables() -> None:
     with engine.begin() as conn:
         for statement in statements:
             conn.execute(text(statement))
+        # Upgrade existing MySQL admin tables without discarding accounts.
+        columns = {c['name'] for c in inspect(conn).get_columns('admin_users')}
+        if 'role' not in columns:
+            conn.execute(text("ALTER TABLE admin_users ADD COLUMN role VARCHAR(20) NOT NULL DEFAULT 'admin'"))

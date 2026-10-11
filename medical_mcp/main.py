@@ -1,30 +1,14 @@
-from fastapi import FastAPI 
-from pydantic import BaseModel 
-from database import init_db 
-from ai_agent import ask_agent 
+"""The original standalone medical demo is retired: never expose a public patient-lookup endpoint."""
+from fastapi import FastAPI, HTTPException
 
-app = FastAPI(
-    title="Medical Clinic MCP Server", version="1.0.0"
-)
+app = FastAPI(title='Medical MCP demo retired')
 
-##Request Model 
-class ChatRequest(BaseModel):
-    message: str 
 
-## startup the db 
-@app.on_event("startup")
-def startup():
-    init_db() 
-
-##Route 
-@app.get("/")
+@app.get('/')
 def root():
-    return{
-        "message": "Clinic AI Assitant is running..."
-    }
+    return {'status': 'retired', 'replacement': '/newpage.html on the main application'}
 
-##Chat 
-@app.post("/chat") 
-async def chat(request: ChatRequest):
-    result = await ask_agent(request.message) 
-    return result 
+
+@app.post('/chat')
+def insecure_legacy_chat_disabled():
+    raise HTTPException(410, 'This unscoped demo was disabled for patient privacy. Use the main authenticated MCP assistant.')
