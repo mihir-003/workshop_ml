@@ -1,0 +1,13 @@
+numpy
+pandas
+scikit-learn
+fastapi
+uvicorn
+jinja2
+python-multipart
+nltk
+gensim
+groq>=0.31,<1
+sqlalchemy>=2.0,<3
+pymysql>=1.1,<2
+pillow>=11,<13

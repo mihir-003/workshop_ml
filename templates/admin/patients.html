@@ -1,0 +1,307 @@
+{# 1. REUSABLE VIEW HELPERS: LOCAL TO THIS PAGE #}
+{% macro icon(name, cls='') -%}
+  <svg class="icon {{ cls }}"
+       width="20"
+       height="20"
+       viewBox="0 0 24 24"
+       fill="none"
+       stroke="currentColor"
+       stroke-width="1.7"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       aria-hidden="true">
+    {% if name == "plus" %}
+      <path d="M12 4v16M4 12h16" />
+    {% elif name == "arrow" %}
+      <path d="M5 12h14m-5-5 5 5-5 5" />
+    {% elif name == "chevron" %}
+      <path d="m6 9 6 6 6-6" />
+    {% elif name == "chat" %}
+      <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 10 10 0 0 1-4-.9L3 21l1.9-5.5a10 10 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5Z" />
+      <path d="M8 10h8m-8 4h5" />
+    {% elif name == "calendar" %}
+      <rect x="3" y="5" width="18" height="16" rx="3" />
+      <path d="M8 3v4m8-4v4M3 11h18m-13 4h2m4 0h2m-8 3h2" />
+    {% elif name == "user" %}
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21v-2a8 8 0 0 1 16 0v2" />
+    {% elif name == "users" %}
+      <circle cx="9" cy="8" r="3" />
+      <path d="M3 21v-2a6 6 0 0 1 12 0v2m1-16a3 3 0 0 1 0 6m5 10v-2a6 6 0 0 0-4-5" />
+    {% elif name == "stethoscope" %}
+      <path d="M6 3v2H4v6a5 5 0 0 0 10 0V5h-2V3m-3 13v1a5 5 0 0 0 10 0v-3" />
+      <circle cx="19" cy="11" r="3" />
+    {% elif name == "sparkles" %}
+      <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Zm8-2v4m-2-2h4" />
+    {% elif name == "shield" %}
+      <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z" />
+      <path d="m8 12 3 3 5-6" />
+    {% elif name == "heart" %}
+      <path d="M20.5 5.5a5.3 5.3 0 0 0-8.5 1 5.3 5.3 0 0 0-8.5-1C-.5 10 5 15 12 21c7-6 12.5-11 8.5-15.5Z" />
+      <path d="M5 12h3l2-3 3 6 2-3h4" />
+    {% elif name == "clock" %}
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    {% elif name == "grid" %}
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+    {% elif name == "search" %}
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m16 16 5 5" />
+    {% elif name == "close" %}
+      <path d="m6 6 12 12M18 6 6 18" />
+    {% elif name == "menu" %}
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    {% elif name == "logout" %}
+      <path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5m5-14 5 5-5 5m-7-5h12" />
+    {% elif name == "settings" %}
+      <path d="M4 7h16M4 17h16" />
+      <circle cx="8" cy="7" r="3" fill="var(--surface, #fff)" />
+      <circle cx="16" cy="17" r="3" fill="var(--surface, #fff)" />
+    {% elif name == "image" %}
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <circle cx="8" cy="8" r="1.5" />
+      <path d="m21 15-5-5L5 21" />
+    {% elif name == "attach" %}
+      <path d="m8 13 7-7a3 3 0 0 1 4 4l-8 8a5 5 0 0 1-7-7l8-8" />
+    {% elif name == "send" %}
+      <path d="m22 2-7 20-4-9-9-4L22 2Zm0 0L11 13" />
+    {% elif name == "refresh" %}
+      <path d="M20 7v5h-5M4 17v-5h5" />
+      <path d="M6 6a8 8 0 0 1 13 3M18 18a8 8 0 0 1-13-3" />
+    {% elif name == "check" %}
+      <path d="m5 12 4 4L19 6" />
+    {% elif name == "edit" %}
+      <path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15v5Z" />
+    {% elif name == "trash" %}
+      <path d="M3 6h18m-12 0V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7" />
+    {% elif name == "eye" %}
+      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12Z" />
+      <circle cx="12" cy="12" r="3" />
+    {% elif name == "lock" %}
+      <rect x="5" y="10" width="14" height="11" rx="2" />
+      <path d="M8 10V6a4 4 0 0 1 8 0v4m-4 5v2" />
+    {% elif name == "info" %}
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v6m0-10h.01" />
+    {% elif name == "document" %}
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" />
+      <path d="M14 2v6h6M8 13h8m-8 4h5" />
+    {% elif name == "expand" %}
+      <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
+    {% elif name == "activity" %}
+      <path d="M2 12h5l3-9 4 18 3-9h5" />
+    {% else %}
+      <circle cx="12" cy="12" r="8" />
+      <path d="M12 8v8m-4-4h8" />
+    {% endif %}
+  </svg>
+{%- endmacro %}
+
+{% macro brand(href='/', label='Smart clinic') -%}
+  <a class="brand" href="{{ href }}" aria-label="Sanjeevani {{ label }}">
+    <span class="brand-mark">{{ icon("plus") }}</span>
+    <span>
+      <strong>Sanjeevani<span class="brand-period">.</span>
+      </strong>
+      <small>{{ label }}</small>
+    </span>
+  </a>
+{%- endmacro %}
+
+{% macro empty(title, text, name='calendar') -%}
+  <div class="empty-state">
+    <span class="empty-icon">{{ icon(name) }}</span>
+    <strong>{{ title }}</strong>
+    <p>{{ text }}</p>
+  </div>
+{%- endmacro %}
+
+{# 2. COMPLETE PAGE: DOCUMENT, NAVIGATION, CONTENT AND FOOTER #}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#127d70">
+    <title>Patients | Sanjeevani admin</title>
+    <link rel="icon"
+          href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23127d70'/%3E%3Cpath d='M20 10v20M10 20h20' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/static/style.css?v=8.2">
+    
+  <link rel="stylesheet" href="/static/admin.css?v=7.0">
+
+    <script src="/static/site.js?v=8.2" defer></script>
+    
+  </head>
+  <body class="admin-page"
+        
+        >
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    
+    <main id="main-content">
+      
+  <div class="admin-shell">
+    <button id="sidebar-backdrop"
+            class="sidebar-backdrop"
+            aria-label="Close navigation"
+            type="button"
+            hidden></button>
+    <aside id="admin-sidebar" class="admin-sidebar">
+      <div class="sidebar-brand">{{ brand('/admin/dashboard', 'Clinic workspace') }}</div>
+      <div class="sidebar-caption">WORKSPACE</div>
+      <nav class="admin-nav" aria-label="Admin navigation">
+        {% for href, label, glyph in [('/admin/dashboard', 'Overview', 'grid'), ('/admin/doctors', 'Doctors', 'stethoscope'), ('/admin/slots', 'Time slots', 'clock'), ('/admin/appointments', 'Appointments', 'calendar'), ('/admin/patients', 'Patients', 'users'), ('/admin/treatments', 'Treatments', 'document')] %}
+          <a href="{{ href }}"
+             {% if href in request.url.path %}class="active" aria-current="page"{% endif %}>{{ icon(glyph) }}<span>{{ label }}</span>
+            {% if href in request.url.path %}
+              <span class="nav-active-dot"></span>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </nav>
+      <div class="sidebar-tip">
+        {{ icon("heart") }}<strong>A little more time for care.</strong>
+        <p>Keep schedules current and every visit organized.</p>
+        <a href="/admin/slots">Manage availability {{ icon("arrow") }}</a>
+      </div>
+      <div class="sidebar-bottom">
+        <a href="/">{{ icon("arrow") }} Patient website</a>
+        <form method="post" action="/admin/logout" data-native-form>
+          <button type="submit" data-loading="Logging out…">{{ icon("logout") }} Log out</button>
+        </form>
+        <div class="sidebar-account">
+          <span>A</span>
+          <div>
+            <strong>Clinic administrator</strong>
+            <small>Admin workspace</small>
+          </div>
+          {{ icon("shield") }}
+        </div>
+      </div>
+    </aside>
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <button id="admin-menu-toggle"
+                  class="icon-button"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="admin-sidebar"
+                  aria-label="Open admin navigation">{{ icon("menu") }}</button>
+          <a href="/admin/dashboard">Workspace</a>
+          <span>/</span>
+          <span>Patients</span>
+        </div>
+        <div>
+          <span class="topbar-date" data-admin-date></span>
+          <span class="admin-profile">A</span>
+        </div>
+      </header>
+      <div class="admin-content">
+        <div class="admin-page-heading">
+          <div>
+            <span class="eyebrow">SANJEEVANI CLINIC</span>
+            <h1>Your patients</h1>
+            <p>The people connected to your clinic.</p>
+          </div>
+          <div class="page-actions">
+            
+          </div>
+        </div>
+        {% if message %}
+          <div class="alert success" role="status">
+            {{ icon("check") }}{{ message }}<button type="button"
+        class="icon-button"
+        data-dismiss-alert
+        aria-label="Dismiss message">{{ icon("close") }}</button>
+          </div>
+        {% endif %}
+        {% if error %}
+          <div class="alert error" role="alert">
+            {{ icon("info") }}{{ error }}<button type="button"
+        class="icon-button"
+        data-dismiss-alert
+        aria-label="Dismiss error">{{ icon("close") }}</button>
+          </div>
+        {% endif %}
+        
+  <section class="panel">
+    <div class="panel-head">
+      <div>
+        <h2>
+          Patient directory <span class="count-chip">{{ users|length }}</span>
+        </h2>
+        <p>Search registered patient accounts.</p>
+      </div>
+      <form class="search-form" method="get">
+        <label class="search-input">
+          {{ icon("search") }}<span class="sr-only">Search patients</span>
+          <input type="search"
+                 name="q"
+                 value="{{ q }}"
+                 placeholder="Name, email or phone">
+        </label>
+        <button type="submit" class="button button-secondary button-small">Search</button>
+        {% if q %}
+          <a href="/admin/patients" class="icon-button" aria-label="Clear search">{{ icon("close") }}</a>
+        {% endif %}
+      </form>
+    </div>
+    <div class="table-wrap" tabindex="0" aria-label="Patients">
+      <table>
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Email address</th>
+            <th>Phone</th>
+            <th>Account ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <tr>
+              <td>
+                <div class="person-cell">
+                  <span class="person-avatar">{{ (user.name or 'P')[0]|upper }}</span>
+                  <span>
+                    <strong>{{ user.name or 'Patient' }}</strong>
+                    <small>Patient account</small>
+                  </span>
+                </div>
+              </td>
+              <td>{{ user.email or '—' }}</td>
+              <td>{{ user.phone or '—' }}</td>
+              <td>
+                <span class="record-id">#{{ user.id }}</span>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="4">{{ empty('No patients found', 'Patient accounts will appear here when people sign up.', 'users') }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+        <footer class="admin-footer">
+          <span>© <span data-year></span> Sanjeevani · Clinic workspace</span>
+          <span>{{ icon("clock") }} All appointment times in IST</span>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+    </main>
+    
+    <div id="ui-toast" class="toast" role="status" hidden></div>
+    
+  <script src="/static/admin.js?v=7.0" defer></script>
+  
+
+  </body>
+</html>
